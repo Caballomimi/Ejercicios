@@ -17,10 +17,32 @@ window.onload=()=>{
             var botonEditar = document.createElement("button");
             botonEditar.textContent = "Editar";
             botonEditar.classList.add("editar");
+            botonEditar.addEventListener("click", (e)=>{
+              var liElemento = e.target.parentNode;
+              var bElemento = liElemento.firstChild; 
+          
+              var inputElemento = document.createElement("input");
+              inputElemento.value = bElemento.textContent;
+              bElemento.replaceWith(inputElemento);
+          
+              inputElemento.addEventListener("keyup", (e)=> {
+                  if (e.key === "Enter") {
+                      var nuevoTexto = inputElemento.value;
+                      if (nuevoTexto !== "") {
+                          bElemento.textContent = nuevoTexto;
+                          inputElemento.replaceWith(bElemento);
+                      }
+                  } 
+              });
+      
+            });
 
             var botonEliminar = document.createElement("button");
             botonEliminar.textContent = "Eliminar";
             botonEliminar.classList.add("eliminar");
+            botonEliminar.addEventListener("click", (e)=>{
+              e.target.parentNode.remove();
+            });
 
             nuevoItem.appendChild(bElemento);
             nuevoItem.appendChild(botonEditar);
@@ -30,33 +52,6 @@ window.onload=()=>{
             document.getElementById("nuevoElemento").value = "";
 
         }
-    });
-    botonesEditar.forEach(element=> {
-      element.addEventListener("click", (e)=>{
-        var liElemento = e.target.parentNode;
-        var bElemento = liElemento.firstChild; 
-    
-        var inputElemento = document.createElement("input");
-        inputElemento.value = bElemento.textContent;
-        bElemento.replaceWith(inputElemento);
-    
-        inputElemento.addEventListener("keyup", (e)=> {
-            if (e.key === "Enter") {
-                var nuevoTexto = inputElemento.value;
-                if (nuevoTexto !== "") {
-                    bElemento.textContent = nuevoTexto;
-                    inputElemento.replaceWith(bElemento);
-                }
-            } 
-        });
-
-      });
-    });
-
-    botonesEliminar.forEach(element => {
-      element.addEventListener("click", (e)=>{
-        e.target.parentNode.remove();
-      });
     });
 
     eliminarTodo.addEventListener("click", () => {
