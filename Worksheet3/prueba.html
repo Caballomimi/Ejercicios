@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario con Lista</title>
+</head>
+<body>
+
+<h1>Formulario con Lista</h1>
+
+<div>
+  <input type="text" id="nuevoElemento" placeholder="Escribe algo">
+  <button onclick="agregarElemento()">Agregar</button>
+</div>
+
+<ul id="listaElementos"></ul>
+
+<script>
+function agregarElemento() {
+  var nuevoElemento = document.getElementById('nuevoElemento').value;
+  if (nuevoElemento.trim() !== '') {
+    var lista = document.getElementById('listaElementos');
+    var nuevoItem = document.createElement('li');
+    nuevoItem.innerHTML = `
+      <span>${nuevoElemento}</span>
+      <button id="editar">Editar</button>
+      <button id="eliminar">Eliminar</button>
+    `;
+    lista.appendChild(nuevoItem);
+    document.getElementById('nuevoElemento').value = '';
+  }
+  
+  document.getElementById('editar').addEventListener('click', function() {
+    editarElemento(this);
+  });
+  
+  document.getElementById('eliminar').addEventListener('click', function() {
+    eliminarElemento(this);
+  });
+}
+
+function editarElemento(botonEditar) {
+  var spanElemento = botonEditar.previousElementSibling;
+  var inputElemento = document.createElement('input');
+  inputElemento.value = spanElemento.textContent;
+  spanElemento.replaceWith(inputElemento);
+  
+  inputElemento.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+      var nuevoTexto = inputElemento.value.trim();
+      if (nuevoTexto !== '') {
+        spanElemento.textContent = nuevoTexto;
+        inputElemento.replaceWith(spanElemento);
+      }
+    } else if (event.key === 'Escape') {
+        inputElemento.replaceWith(spanElemento);
+    }
+  });
+}
+
+function eliminarElemento(botonEliminar) {
+  botonEliminar.parentNode.remove();
+}
+</script>
+
+</body>
+</html>
