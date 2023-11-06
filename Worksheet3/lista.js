@@ -1,7 +1,5 @@
 window.onload=()=>{
     const submit= document.getElementById("submit")
-    var botonesEditar = document.querySelectorAll(".editar");
-    var botonesEliminar = document.querySelectorAll(".eliminar");
     var lista = document.getElementById("listaElementos");
     var eliminarTodo = document.getElementById("eliminarTodo");
 
