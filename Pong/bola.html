@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de la bola</title>
+    <script src="./bola.js"></script>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        svg{
+            width: 100%;
+            color: white;
+            background-color: black;
+        }
+        h1{
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>El juego de la bola</h1>
+    <h4>0 - 0</h4>
+    <svg width="1300" height="400" border="2px solid black" >
+        <rect width="25" height="100" x="25" y="20" fill="white" id="rect1"/>
+        <circle cx="625" cy="225" r="25" stroke="black" stroke-width="3" fill="red" id="bola"/>
+        <rect width="25" height="100" x="1175" y="20" fill="white" id="rect2"/>
+
+    </svg>
+    
+</body>
+</html>
