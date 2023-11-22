@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lista.js"></script>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        div{
+            margin: 20px;
+        }
+        li{
+            margin: 10px;
+        }
+        .eliminar,.editar{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Grocery Bud</h1>
+    <div>
+        <input type="text" id="nuevoElemento" placeholder="e.g eggs">
+        <button id="submit">Agregar</button>
+        <button id="eliminarTodo">Eliminar Todo</button>
+    </div>
+      
+    <ul id="listaElementos">
+        
+    </ul>
+      
+</body>
+</html>
